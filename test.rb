@@ -5,7 +5,8 @@ require 'engtagger'
 tgr = EngTagger.new
 
 # Sample text
-text = "Alice chased the big fat cat."
+#text = "Alice chased the big fat cat."
+text = "Deer Abby, I really want to propose to my girlfriend, but I'm worried because I'm a deer and her husband is a hunter. What should I do? Confused, Thumper."
 
 # Add part-of-speech tags to text
 tagged = tgr.add_tags(text)
