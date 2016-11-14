@@ -6,7 +6,9 @@ tgr = EngTagger.new
 
 # Sample text
 #text = "Alice chased the big fat cat."
-text = "Deer Abby, I really want to propose to my girlfriend, but I'm worried because I'm a deer and her husband is a hunter. What should I do? Confused, Thumper."
+text = "Deer Abby, I really want to propose to my girlfriend, but I'm worried because I'm a young buck and her husband is an avid hunter. What should I do? Confused, Thumper."
+
+puts text
 
 # Add part-of-speech tags to text
 tagged = tgr.add_tags(text)
@@ -21,4 +23,23 @@ word_list = tgr.get_words(text)
 # Get a readable version of the tagged text
 readable = tgr.get_readable(text)
 
-puts readable
+
+nouns = tgr.get_nouns(tagged)
+
+puts "\nnouns: #{nouns}"
+
+proper = tgr.get_proper_nouns(tagged)
+
+puts "proper nouns: #{proper}"
+
+adj = tgr.get_adjectives(tagged)
+
+puts "adjectives: #{adj}"
+
+nps = tgr.get_noun_phrases(tagged)
+
+puts "noun phrases: #{nps}"
+
+
+puts "\n\ntagged text: #{readable}"
+
