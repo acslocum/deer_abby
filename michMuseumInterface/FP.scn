@@ -1,0 +1,26 @@
+b:Welcome to the Historical Museums of Michigan Room
+b:Welcome to the Museums of Historical Michigan Room
+b:Welcome to the Museums of Michigan Historical Room
+#scenes - follow the format:
+#s:<scene name>:<museum name>:<museum location>:<scene audio>:<light colors rgb 1-8>
+s:Ford's Early Life:The Gerald Ford Museum:Grand Rapids, MI:FP01 - Ford's Early Life.mp3:0x000000:0x000000:0xffffff:0x000000:0xffffff:0xffffff:0x000000:0x000000
+s:Gerald Ford at College:The Gerald Ford Museum:Grand Rapids, MI:FP02 - Gerald Ford at College.mp3:0x000000:0xffff00:0xffffff:0x000000:0x0000ff:0x000000:0x000000:0x000000
+s:Great Sayings of Gerald Ford:The Gerald Ford Museum:Grand Rapids, MI:FP03 - Great Sayings of Geral Ford.mp3:0x000000:0x000000:0xffffff:0x000000:0x000000:0x000000:0xffffff:0x000000
+s:Ford's Unfortunate Death:The Gerald Ford Museum:Grand Rapids, MI:FP04 - Ford's Unfortunate Death.mp3:0x000000:0x000000:0xffffff:0xffffff:0xffffff:0x000000:0x000000:0x000000
+s:The Fate of the Edmund Fitzgerald:Great Lakes Shipwreck Museum:Sault Ste. Marie, MI:FP05 - The Fate of the Edmund Fitzgerald.mp3:0x000000:0xff0000:0x000000:0x000000:0x000000:0x000000:0xff0000:0x000000
+s:Moose Carcass:Great Lakes Shipwreck Museum:Sault Ste. Marie, MI:FP06 - Moose Carcass.mp3:0x000000:0xffffff:0x000000:0x000000:0x000000:0xffffff:0x000000:0x0000ff
+s:You Don't Believe in Shipwrecks:Great Lakes Shipwreck Museum:Sault Ste. Marie, MI:FP07 - You Don't Believe in Shipwrecks_.mp3:0x000000:0x000000:0x000000:0xffffff:0xffffff:0x000000:0x000000:0x000000
+s:Remember Them - Remember Them All:Great Lakes Shipwreck Museum:Sault Ste. Marie, MI:FP08 - Remember Them - Remember Them All.mp3:0x0000ff:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000
+s:The Wright Brother:The Henry Ford:Dearborn, MI:FP09 - The Wright Brother.mp3:0x000000:0x000000:0x000000:0xffffff:0x000000:0xffffff:0x000000:0x000000
+s:Thomas Edison Invents the Phonograph:The Henry Ford:Dearborn, MI:FP10 - Thomas Edison Invents the Phonograph.mp3:0x000000:0xffffff:0x000000:0x000000:0xffffff:0x000000:0x000000:0x000000
+s:On the Porch with Henry Ford:The Henry Ford:Dearborn, MI:FP11 - On the Porch with Henry Ford.mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0xffffff
+s:The Five Senses of Copper Mining:The Quincy Mine:Hancock, MI:FP12 - The Five Senses of Copper Mining.mp3:0x000000:0x888888:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000
+s:The Mysteries of Mackinacus:Fort Mackinac:Mackinac Island, MI:FP13 - The Mysteries of Mackinacus.mp3:0x000000:0xffffff:0x000000:0x000000:0xffffff:0x000000:0x000000:0x000000
+s:Anne Boleyn Upsets Henry VIII:Fort Mackinac:Mackinac Island, MI:FP14 - Anne Boleyn Upsets Henry VIII.mp3:0x000000:0xffffff:0x000000:0x000000:0x000000:0xffffff:0x000000:0x000000
+s:The British Are Still Here:Fort Mackinac:Mackinac Island, MI:FP15 - The British Are Still Here.mp3:0xffffff:0x000000:0x000000:0x000000:0xffffff:0x000000:0x000000:0x000000
+s:American Life As Lived:Greenfield Village:Dearborn, MI:FP16 - American Life As Lived.mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0xffffff
+s:An 80-Acre Time Machine:Greenfield Village:Dearborn, MI:FP17 - An 80-Acre Time Machine.mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0xffffff
+s:Those People:Greenfield Village:Dearborn, MI:FP18 - Those People.mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0x000000:0xffffff
+s:Barely Legal Lock Action:Soo Locks:Sault Ste. Marie, MI:FP19 - Barely Legal Lock Action.mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0xff0000:0x000000:0x000000
+s:Recreational "Areas":Soo Locks:Sault Ste. Marie, MI:FP20 - Recreational "Areas".mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0xff0000:0x000000:0x000000
+s:Barge on Barge Action:Soo Locks:Sault Ste. Marie, MI:FP21 - Barge on Barge Action.mp3:0x000000:0x000000:0x000000:0x000000:0x000000:0xff0000:0x000000:0x000000
