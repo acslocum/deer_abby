@@ -6,7 +6,7 @@ class DeerAbby
     @current_responder = 0
     @max_responses = 20
     @current_response = 0
-    @voices = ["Agnes", "Princess", "Victoria"]
+    @voices = ["Agnes", "Princess", "Deranged"]
   end
   
   def respond(question)
