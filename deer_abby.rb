@@ -10,9 +10,11 @@ class DeerAbby
   end
   
   def respond(question)
-    response = MadLib.new(next_response)
+    mad_lib = MadLib.new(next_response)
     puts next_responder
-    response.say(question, using_voice)
+    response = mad_lib.fill(question)
+    #puts response
+    `say -v #{using_voice} "#{response}"`
     puts 'x'
   end
   

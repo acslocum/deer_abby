@@ -7,13 +7,11 @@ class MadLib
     @response_number = response_number
   end
   
-  def say(question, voice)
+  def fill(question)
     raw_response = load_response
     word_hash = parse(question)
     #puts word_hash
-    response = merge(raw_response, word_hash)
-    #puts "#{voice}: #{response}"
-    value = `say -v #{voice} "#{response}"`
+    merge(raw_response, word_hash)
   end
   
   def load_response
