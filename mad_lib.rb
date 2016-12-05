@@ -3,13 +3,18 @@ require 'engtagger'
 
 
 class MadLib
+  @nouns = ["fort", "cull", "city council", "zach", "fortress"]
+  @verbs_infinitive = ["party", "explore"]
+  @adjectives = ["weak", "green", "tawny"]
+  
+  
   def initialize(response_number)
     @response_number = response_number
   end
   
   def fill(question)
     raw_response = load_response
-    word_hash = parse(question)
+    word_hash = augment(parse(question))
     #puts word_hash
     merge(raw_response, word_hash)
   end
@@ -30,6 +35,12 @@ class MadLib
       word_hash[pair[1]] << pair[0] 
       end
     word_hash
+  end
+  
+  def augment(word_hash)
+    word_hash["NN"] = [@nouns.sample] unless(word_hash.include? "NN")
+    word_hash["JJ"] = [@adjectives.sample] unless(word_hash.include? "JJ")
+    word_hash["VB"] = [@verbs_infinitive.sample] unless(word_hash.include? "VB")
   end
   
   def merge(raw_response, word_hash)
