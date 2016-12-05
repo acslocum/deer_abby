@@ -30,7 +30,7 @@ class MadLib
     tagged = tgr.get_readable(question)
     extracted = tagged.scan(/(\w+)\/(\w+)/)
     word_hash = {}
-    extracted.each do |pair| 
+    extracted.each do |pair|
       word_hash[pair[1]] = [] unless word_hash[pair[1]]
       word_hash[pair[1]] << pair[0] 
       end
@@ -39,6 +39,7 @@ class MadLib
   
   def augment(word_hash)
     word_hash["NN"] = [@nouns.sample] unless(word_hash.include? "NN")
+    word_hash["NN"] << [@nouns.sample] if(word_hash["NN"].size < 2)
     word_hash["JJ"] = [@adjectives.sample] unless(word_hash.include? "JJ")
     word_hash["VB"] = [@verbs_infinitive.sample] unless(word_hash.include? "VB")
   end

@@ -1,0 +1,1 @@
+Doe: I want to get back your question, can you hold that thought? I can’t talk about {NN} after eleven AM or before bedtime. Frankly, and I would usually wouldn’t say this publicly, I don’t think you should talk about it either. If you can, just try to {VB} it.
