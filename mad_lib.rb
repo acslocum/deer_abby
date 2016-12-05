@@ -5,7 +5,7 @@ require 'engtagger'
 class MadLib
   @nouns = ["fort", "cull", "city council", "zach", "fortress"]
   @verbs_infinitive = ["party", "explore"]
-  @adjectives = ["weak", "green", "tawny"]
+  @adjectives = ["weak", "green", "tawny", "sparkling"]
   
   
   def initialize(response_number)
