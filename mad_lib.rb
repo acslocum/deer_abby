@@ -3,18 +3,18 @@ require 'engtagger'
 
 
 class MadLib
-  @nouns = ["fort", "cull", "city council", "zach", "fortress"]
-  @verbs_infinitive = ["party", "explore"]
-  @adjectives = ["weak", "green", "tawny", "sparkling"]
   
   
   def initialize(response_number)
     @response_number = response_number
+    @nouns = ["fort", "cull", "city council", "zach", "fortress"]
+    @verbs_infinitive = ["party", "explore"]
+    @adjectives = ["weak", "green", "tawny", "sparkling"]
   end
   
   def fill(question)
     raw_response = load_response
-    word_hash = augment(parse(question))
+    word_hash = parse(question)
     #puts word_hash
     merge(raw_response, word_hash)
   end
@@ -31,10 +31,18 @@ class MadLib
     extracted = tagged.scan(/(\w+)\/(\w+)/)
     word_hash = {}
     extracted.each do |pair|
-      word_hash[pair[1]] = [] unless word_hash[pair[1]]
-      word_hash[pair[1]] << pair[0] 
+      key = normalize(pair[1])
+      word_hash[key] = [] unless word_hash[key]
+      word_hash[key] << pair[0] 
       end
     word_hash
+  end
+  
+  def normalize(key)
+    return "VB" if key.include? "VB"
+    return "NN" if key.include? "NN"
+    return "JJ" if key.include? "JJ"
+    key
   end
   
   def augment(word_hash)
