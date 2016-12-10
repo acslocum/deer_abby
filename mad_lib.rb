@@ -5,23 +5,23 @@ require 'engtagger'
 class MadLib
   
   
-  def initialize(response_number)
-    @response_number = response_number
-    @nouns = ["fort", "cull", "city council", "zach", "fortress"]
-    @verbs_infinitive = ["party", "explore"]
-    @adjectives = ["weak", "green", "tawny", "sparkling"]
+  def initialize()
+    @nouns = ["city council", "scarlett", "fortress", "road kill", "sharp shooter"]
+    @verbs_infinitive = ["prance", "forage", "cull"]
+    @adjectives = ["white tailed", "green", "tawny"]
   end
   
   def fill(question)
     raw_response = load_response
     word_hash = parse(question)
     #puts word_hash
+    augment(word_hash)
     merge(raw_response, word_hash)
   end
   
   def load_response
     responses = Dir.entries("responses")
-    file_number = (@response_number % (responses.size-2))+2
+    file_number = (rand(responses.size-2))+2
     File.open("responses/#{responses[file_number]}").gets
   end
   
@@ -34,7 +34,7 @@ class MadLib
       key = normalize(pair[1])
       word_hash[key] = [] unless word_hash[key]
       word_hash[key] << pair[0] 
-      end
+    end
     word_hash
   end
   
@@ -47,7 +47,7 @@ class MadLib
   
   def augment(word_hash)
     word_hash["NN"] = [@nouns.sample] unless(word_hash.include? "NN")
-    word_hash["NN"] << [@nouns.sample] if(word_hash["NN"].size < 2)
+    word_hash["NN"] << @nouns.sample if(word_hash["NN"].size < 2)
     word_hash["JJ"] = [@adjectives.sample] unless(word_hash.include? "JJ")
     word_hash["VB"] = [@verbs_infinitive.sample] unless(word_hash.include? "VB")
   end
