@@ -13,35 +13,35 @@ class DeerAbby
     @delimiter = ':'
     @usb_port = "/dev/cu.usbmodem1411"
     @speed = 115200
-    @serial = SerialPort.new(@usb_port,@speed,8,1,SerialPort::NONE)
+#    @serial = SerialPort.new(@usb_port,@speed,8,1,SerialPort::NONE)
   end
   
   def respond(question)
     mad_lib = MadLib.new
     next_responder
-    @serial.puts(format_for_arduino(get_light_string))
-    #puts @serial.readline
     response = mad_lib.fill(question)
+    speak(response, @current_responder)
+  end
+  
+  def speak(response, responder)
+#    @serial.puts(format_for_arduino(get_light_string(responder)))
     puts "\n\n#{response}"
     `say -v #{using_voice} "#{response}"`
-    #@serial.puts(format_for_arduino(reset_light_string))
   end
   
   def next_response
     @current_response = (@current_response+1) % @max_responses
   end
   
-  def get_light_string
-    result = case @current_responder
+  def get_light_string(responder)
+    result = case responder
     when 0
-      [@delimiter, @on, @on, @on, @off, @off, @off, @off, @off, @off, @off, @off, @off] #1
+      [@delimiter, @on, @on, @on, @off, @off, @off, @off, @off, @off, @off, @off, @off] #1 - deer abby
     when 1
-      #[@delimiter, @off, @off, @off, @on, @on, @on, @off, @off, @off, @off, @off, @off] #2
-      [@delimiter, @off, @off, @off, @off, @off, @off, @on, @on, @on, @off, @off, @off] #2
+      [@delimiter, @off, @off, @off, @off, @off, @off, @on, @on, @on, @off, @off, @off] #2 - lan antlers
     else
-      [@delimiter, @off, @off, @off, @off, @off, @off, @off, @off, @off, @on, @on, @on] #3
+      [@delimiter, @off, @off, @off, @off, @off, @off, @off, @off, @off, @on, @on, @on] #3 - dan staggage
     end
-    #puts result
     result
   end
   
@@ -70,7 +70,7 @@ while input = gets do
   if(input.length > 5)
     deer.respond(input)
   else
-    puts "   Please be a bit more verbose, deer.\n"
+    deer.speak("   Please be a bit more verbose, deer.\n", 0)
   end
   puts prompt
   putc ">"
