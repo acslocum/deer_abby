@@ -11,9 +11,9 @@ class DeerAbby
     @on = 255
     @off = 0
     @delimiter = ':'
-    @usb_port = "/dev/cu.usbmodem1411"
+    @usb_port = "/dev/cu.usbmodem1451"
     @speed = 115200
-#    @serial = SerialPort.new(@usb_port,@speed,8,1,SerialPort::NONE)
+    @serial = SerialPort.new(@usb_port,@speed,8,1,SerialPort::NONE)
   end
   
   def respond(question)
@@ -24,7 +24,7 @@ class DeerAbby
   end
   
   def speak(response, responder)
-#    @serial.puts(format_for_arduino(get_light_string(responder)))
+    @serial.puts(format_for_arduino(get_light_string(responder)))
     puts "\n\n#{response}"
     `say -v #{using_voice} "#{response}"`
   end
