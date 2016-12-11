@@ -1,0 +1,916 @@
+i need a new car but I'm afraid of hitting deer
+
+
+Deer reader, there isn’t much I can tell you about how to hitting a party that you don’t know yourself. You just don’t want to admit it. This goes no place good – I call it “the bad old days.” Old for me, maybe not for you. For example, I had a car party once where all four of my friends ended up being served to their children in the soup. Is that what you want to happen? That’s what happened in “the bad old days.”
+
+
+  About what do need advice, deer reader?
+
+>^Cdeer_abby.rb:69:in `gets': Interrupt
+	from deer_abby.rb:69:in `gets'
+	from deer_abby.rb:69:in `<main>'
+
+~/dev/deer_abby $ git st
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[32mmodified:   deer_abby.rb[m
+	[32mmodified:   responses/hipster.txt[m
+	[32mmodified:   responses/uncle.txt[m
+	[32mmodified:   responses/wolves.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[36mdeer_abby_log.txt[m
+	[36mfucking.txt[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+~/dev/deer_abby $ git add [K[K[K[Kdiff deer_abby
+fatal: ambiguous argument 'deer_abby': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+~/dev/deer_abby $ git diff deer_abby.rb 
+[?1h=[1mdiff --git a/deer_abby.rb b/deer_abby.rb[m[m
+[1mindex 255666e..a9852d5 100644[m[m
+[1m--- a/deer_abby.rb[m[m
+[1m+++ b/deer_abby.rb[m[m
+[36m@@ -13,35 +13,35 @@[m [mclass DeerAbby[m[m
+     @delimiter = ':'[m[m
+     @usb_port = "/dev/cu.usbmodem1411"[m[m
+     @speed = 115200[m[m
+[31m-    @serial = SerialPort.new(@usb_port,@speed,8,1,SerialPort::NONE)[m[m
+[32m+[m[32m#    @serial = SerialPort.new(@usb_port,@speed,8,1,SerialPort::NONE)[m[m
+   end[m[m
+   [m[m
+   def respond(question)[m[m
+     mad_lib = MadLib.new[m[m
+     next_responder[m[m
+[31m-    @serial.puts(format_for_arduino(get_light_string))[m[m
+[31m-    #puts @serial.readline[m[m
+     response = mad_lib.fill(question)[m[m
+[32m+[m[32m    speak(response, @current_responder)[m[m
+[32m+[m[32m  end[m[m
+[32m+[m[41m  [m[m
+[32m+[m[32m  def speak(response, responder)[m[m
+[32m+[m[32m#    @serial.puts(format_for_arduino(get_light_string(responder)))[m[m
+     puts "\n\n#{response}"[m[m
+:[K[K [KESCESC[KOO[KBB[K     `say -v #{using_voice} "#{response}"`[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-    #@serial.puts(format_for_arduino(reset_light_string))[m[m
+:[K[K [KESCESC[KOO[KBB[K   end[m[m
+:[K[K [KESCESC[KOO[KBB[K   [m[m
+:[K[K [KESCESC[KOO[KBB[K   def next_response[m[m
+:[K[K [KESCESC[KOO[KBB[K     @current_response = (@current_response+1) % @max_responses[m[m
+:[K[K [KESCESC[KOO[KBB[K   end[m[m
+:[K[K [KESCESC[KOO[KBB[K   [m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-  def get_light_string[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-    result = case @current_responder[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m[32m  def get_light_string(responder)[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m[32m    result = case responder[m[m
+:[K[K [KESCESC[KOO[KBB[K     when 0[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-      [@delimiter, @on, @on, @on, @off, @off, @off, @off, @off, @off, @off, @of[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m[32m      [@delimiter, @on, @on, @on, @off, @off, @off, @off, @off, @off, @off, @of[m
+:[K[K [KESCESC[KOO[KBB[K     when 1[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-      #[@delimiter, @off, @off, @off, @on, @on, @on, @off, @off, @off, @off, @o[m
+:[K[K [KESCESC[KOO[KBB[K[31m-      [@delimiter, @off, @off, @off, @off, @off, @off, @on, @on, @on, @off, @of[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m[32m      [@delimiter, @off, @off, @off, @off, @off, @off, @on, @on, @on, @off, @of[m
+:[K[K [KESCESC[KOO[KBB[K     else[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-      [@delimiter, @off, @off, @off, @off, @off, @off, @off, @off, @off, @on, @[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m[32m      [@delimiter, @off, @off, @off, @off, @off, @off, @off, @off, @off, @on, @[m
+:[K[K [KESCESC[KOO[KBB[K     end[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-    #puts result[m[m
+:[K[K [KESCESC[KOO[KBB[K     result[m[m
+:[K[K [KESCESC[KOO[KBB[K   end[m[m
+:[K[K [KESCESC[KOO[KBB[K   [m[m
+:[K[K [KESCESC[KOO[KBB[K[36m@@ -70,7 +70,7 @@[m [mwhile input = gets do[m[m
+:[K[K [KESCESC[KOO[KBB[K   if(input.length > 5)[m[m
+:[K[K [KESCESC[KOO[KBB[K     deer.respond(input)[m[m
+:[K[K [KESCESC[KOO[KBB[K   else[m[m
+:[K[K [KESCESC[KOO[KBB[K[31m-    puts "   Please be a bit more verbose, deer.\n"[m[m
+:[K[K [KESCESC[KOO[KBB[K[32m+[m[32m    deer.speak("   Please be a bit more verbose, deer.\n", 0)[m[m
+:[K[K [KESCESC[KOO[KBB[K   end[m[m
+:[K[K [KESCESC[KOO[KBB[K   puts prompt[m[m
+:[K[K [KESCESC[KOO[KBB[K   putc ">"[m[m
+:[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) [27m[K[K[?1l>~/dev/deer_abby $ git st
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[32mmodified:   deer_abby.rb[m
+	[32mmodified:   responses/hipster.txt[m
+	[32mmodified:   responses/uncle.txt[m
+	[32mmodified:   responses/wolves.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[36mdeer_abby_log.txt[m
+	[36mfucking.txt[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+~/dev/deer_abby $ git add deer_abby.rb 
+~/dev/deer_abby $ git comi[Kmit -m "adding speech for missed [K[K[K[Ktaken [K[K[K[K[K[K[K[K[Knot enough inpout"[K[K[K[Kut"
+[master 6139df0] adding speech for not enough input
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+~/dev/deer_abby $ git add responses/[K[K[K[K[K[K[K[K[K[K[K[Kd responses
+~/dev/deer_abby $ git commit -m "tweaking responses"
+[master 7bb26d4] tweaking responses
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+~/dev/deer_abby $ git push
+Counting objects: 15, done.
+Delta compression using up to 8 threads.
+Compressing objects:  11% (1/9)   Compressing objects:  22% (2/9)   Compressing objects:  33% (3/9)   Compressing objects:  44% (4/9)   Compressing objects:  55% (5/9)   Compressing objects:  66% (6/9)   Compressing objects:  77% (7/9)   Compressing objects:  88% (8/9)   Compressing objects: 100% (9/9)   Compressing objects: 100% (9/9), done.
+Writing objects:  11% (1/9)   Writing objects:  22% (2/9)   Writing objects:  33% (3/9)   Writing objects:  44% (4/9)   Writing objects:  55% (5/9)   Writing objects:  66% (6/9)   Writing objects:  77% (7/9)   Writing objects:  88% (8/9)   Writing objects: 100% (9/9)   Writing objects: 100% (9/9), 1013 bytes | 0 bytes/s, done.
+Total 9 (delta 7), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/7)   [Kremote: Resolving deltas:  28% (2/7)   [Kremote: Resolving deltas:  42% (3/7)   [Kremote: Resolving deltas:  57% (4/7)   [Kremote: Resolving deltas:  71% (5/7)   [Kremote: Resolving deltas:  85% (6/7)   [Kremote: Resolving deltas: 100% (7/7)   [Kremote: Resolving deltas: 100% (7/7), completed with 6 local objects.[K
+To git@github.com:acslocum/deer_abby.git
+   e864170..7bb26d4  master -> master
+~/dev/deer_abby $ clear
+[H[2J~/dev/deer_abby $ [K~/dev/deer_abby $ clear
+[H[2J~/dev/deer_abby $ cleargit pushcommit -m "tweaking responses"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[17Padd responsescommit -m "adding speech for not enough input"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[29Padd deer_abby.rb st[Kdiff deer_abby.rb [Kst[Kruby deer_abby.rb clear[Kruby deer_abby.rb 
+
+
+  About what do need advice, deer reader?
+
+>
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>^Cdeer_abby.rb:69:in `gets': Interrupt
+	from deer_abby.rb:69:in `gets'
+	from deer_abby.rb:69:in `<main>'
+
+~/dev/deer_abby $ ruby deer_abby.rb 
+
+
+  About what do need advice, deer reader?
+
+>
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>\
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>^Cdeer_abby.rb:69:in `gets': Interrupt
+	from deer_abby.rb:69:in `gets'
+	from deer_abby.rb:69:in `<main>'
+
+~/dev/deer_abby $ clear
+[H[2J~/dev/deer_abby $ clearruby deer_abby.rb 
+
+
+  About what do need advice, deer reader?
+
+>
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>I have a girlfriend and shed  doesn't respect me. How do I tell her to find her own forest?
+
+
+You have a forest, and you need to know whether you are you better off with it or without it. Draw two columns in the dirt with your hoof. The column on the left is for pros. The column on the right is for cons. When you're done scratching in the dirt for two hours, you'll know the answer.
+
+
+  About what do need advice, deer reader?
+
+>how do i make more money?
+
+
+Keep in mind that the true scarlett of an individual is how he treats a person who can do him absolutely no good. Take a 52-year-old government employee sitting in the rented Ford Focus, idling on the side of the street at 4am with his rilfe trained on an open field. He can kill that momma deer and her four adolescents, or he can do a few of them and call it a night. No one will know. Except god, that mug of Holiday Inn Express coffee in the cup holder and Mayor Taylor.
+
+
+  About what do need advice, deer reader?
+
+>test    how can i tell zach he needs to go to bed?
+
+
+Your question about i reminds me of something that my friend Remi experienced when he was in school. I'd like to tell you how he handled it, but he was eviscerated in a ditch by crows after being hit by some joyriding high school kids out by the lake. 
+
+
+  About what do need advice, deer reader?
+
+>g t weave me a yarm
+
+
+Your question about weave reminds me of something that my friend Remi experienced when he was in school. I'd like to tell you how he handled it, but he was eviscerated in a ditch by crows after being hit by some joyriding high school kids out by the lake. 
+
+
+  About what do need advice, deer reader?
+
+>how do i find love?
+
+
+Deerest, you just need to let go of your love It will run free, and so will you. What you really need to be thinking about is what you want to do afterward. But don’t make any plans – that way, you won’t be too green when you don’t get every single little thing just right. 
+
+
+  About what do need advice, deer reader?
+
+>how do i tie m y  y hs  shoes
+
+
+Cull-er me confused, but I don't think your tie came through correctly. I seriously have no idea what you were trying to do. I'll just give you my standard advice, if you haven't herd it already, and that's h-e-r-d like the one getting thinned. Four shoes good, two legs green. Now say it with me.
+
+
+  About what do need advice, deer reader?
+
+>i am heartbroken.  why d   y/ ?
+
+
+"The master has failed more times than the beginner has even tried." Push past your fear of scarlett, and focus on your end goal. There used to be a fence around a garden on Vorhies that I tried to jump a thousand times. When I finally made it over, no hosta had ever tasted so sweet. 
+
+
+  About what do need advice, deer reader?
+
+>how?
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>tell more o more about love.
+
+
+Do you often tell alone? I bet you do. I would think long and hard about this before you write to me again. Think about what it feels like, think about the scarlett it gives you. I know you know it. You know that I know you know it. Everybody now knows it’s known. No?
+
+
+  About what do need advice, deer reader?
+
+>helpm  me fix myself
+
+
+Ostensibly, you are asking about scarlett, but there is a subtext to that question that offends me. But, if you must know, venison pairs well with any full-bodied red, particularly some of these modern Spanish reds that have been popping up on the shelves. 
+
+
+  About what do need advice, deer reader?
+
+>what should i wear?
+
+
+Life is full of green questions. Would you rather be killed by a hunter, or mauled by wolves? Will you die of starvation, or of brain wasting disease? You are much more likely to be hit by a Honda Civic than to die of old age, so focus on the now. 
+
+
+  About what do need advice, deer reader?
+
+>i am trying agqin   ain?
+
+
+There are experts who say that you can learn to be a sharp shooter in bed from book-learning, but let me tell you, they just say that since they wrote the books. Write your own book about how to become tawny in bed, and don't let nobody tell you different. In fact, make them read it. Then, they will all be just like you in bed.
+
+
+  About what do need advice, deer reader?
+
+>antler antlers anl te lers
+
+
+Ostensibly, you are asking about antlers, but there is a subtext to that question that offends me. But, if you must know, venison pairs well with any full-bodied red, particularly some of these modern Spanish reds that have been popping up on the shelves. 
+
+
+  About what do need advice, deer reader?
+
+>d Dan, is it your turn again?
+
+
+Are you looking for Mr. turn or Mr. Right? Sometimes Mr. Right has been in front of you the whole time.  He's just wearing camouflage. 
+
+
+  About what do need advice, deer reader?
+
+>how are we doing now?
+
+
+Do you often are alone? I bet you do. I would think long and hard about this before you write to me again. Think about what it feels like, think about the sharp shooter it gives you. I know you know it. You know that I know you know it. Everybody now knows it’s known. No?
+
+
+  About what do need advice, deer reader?
+
+>My nieghbor s dog won't stop barking at night    might      night
+
+
+Deerest: Why are you so sure that the dog isn’t your fault? It might be time for a long majestic run through a sparkling clear n. Look down at your white tailed reflection and think about what you want to see in it, two years from now.
+
+
+  About what do need advice, deer reader?
+
+>I'm bored
+
+
+"The master has failed more times than the beginner has even tried." Push past your fear of sharp shooter, and focus on your end goal. There used to be a fence around a garden on Vorhies that I tried to jump a thousand times. When I finally made it over, no hosta had ever tasted so sweet. 
+
+
+  About what do need advice, deer reader?
+
+>^[[A^[[A^[[A^[[A^[[A                    Shoud I take a r rain je acket
+
+
+Deerest, you just need to let go of your jacket It will run free, and so will you. What you really need to be thinking about is what you want to do afterward. But don’t make any plans – that way, you won’t be too tawny when you don’t get every single little thing just right. 
+
+
+  About what do need advice, deer reader?
+
+>what should i do
+
+
+I understand that you're having relationship issues, but I'm just going to cut the Gordian i of your emotions and say that you should go and see a city council. If you need to, take your partner along. Honestly, I didn't really feel like dealing with this today. I have my own problems.
+
+
+  About what do need advice, deer reader?
+
+>der er abby, will this fortress party be the best one yet?
+
+
+Your question about deer reminds me of something that my friend Remi experienced when he was in school. I'd like to tell you how he handled it, but he was eviscerated in a ditch by crows after being hit by some joyriding high school kids out by the lake. 
+
+
+  About what do need advice, deer reader?
+
+>how do yu    you waterski
+
+
+A fortress is safe in harbor, but that's not what ships are for. Ornamental greenery looks great around a country home, what that's not what greenery is for. Greenery is for eating. The world would be a safer place without ships and ornamental greenery, but then we wouldn't have spice routes and the mass slaughter of cute hoofed creatures.
+
+
+  About what do need advice, deer reader?
+
+>should i get a pet f deer
+
+
+I have had great experiences with i, but I will say that my experiences with men wearing plaid and an orange cap have been decidedly negative. 
+
+
+  About what do need advice, deer reader?
+
+>why   should I name myself scarlett
+
+
+People who drink to drown their scarlett should be told that scarlett knows how to swim. Like my cousin Biffy. He saw this YouTube video of a moose crossing a river and he was all like, "Watch this." By the time they finished picking him out of the turbines, it was mating season, so we just moved on to the next adventure.
+
+
+  About what do need advice, deer reader?
+
+>why arre you a der er
+
+
+Deer reader, there isn’t much I can tell you about how to prance a party that you don’t know yourself. You just don’t want to admit it. This goes no place good – I call it “the bad old days.” Old for me, maybe not for you. For example, I had a arre party once where all four of my friends ended up being served to their children in the soup. Is that what you want to happen? That’s what happened in “the bad old days.”
+
+
+  About what do need advice, deer reader?
+
+>can I be a deer
+
+
+Texting and driving has real consequences. I've lost more friends than I care to count to this scourge of the modern age. It can wait! 
+
+
+  About what do need advice, deer reader?
+
+>T what do I do if I start growing mold on my upper lip
+
+
+I understand that you're having relationship issues, but I'm just going to cut the Gordian lip of your emotions and say that you should go and see a mold. If you need to, take your partner along. Honestly, I didn't really feel like dealing with this today. I have my own problems.
+
+
+  About what do need advice, deer reader?
+
+>how do you eat mayo
+
+
+You tell me all about your favorite mayo and I'll tell you my favorite movie. I bet you think I'm going to say "Not Bambi!," or "certainly not The Deer Hunter!" The truth is that I prefer stage productions and light opera. 
+
+
+  About what do need advice, deer reader?
+
+>why are roses red
+
+
+Deer reader, there isn’t much I can tell you about how to are a party that you don’t know yourself. You just don’t want to admit it. This goes no place good – I call it “the bad old days.” Old for me, maybe not for you. For example, I had a roses party once where all four of my friends ended up being served to their children in the soup. Is that what you want to happen? That’s what happened in “the bad old days.”
+
+
+  About what do need advice, deer reader?
+
+>What should I do about labelling the bear?
+
+
+Before you can tackle your fortress situation, you have to decide what is more important to you. The friendship, or your life? Roads are dangerous, have your buddy cross first and see what happens. 
+
+
+  About what do need advice, deer reader?
+
+>Did I invite e Jason?
+
+
+Cull-er me confused, but I don't think your city council came through correctly. I seriously have no idea what you were trying to Did. I'll just give you my standard advice, if you haven't herd it already, and that's h-e-r-d like the one getting thinned. Four city council good, two legs green. Now say it with me.
+
+
+  About what do need advice, deer reader?
+
+>2/3 of thee   se make no sense
+
+
+Deerest, I usually don’t give stock advice, but it sounds like your make is on its way to sense! Do everything you can to invest in your emotions. Buy cheap, sell deer! That’s a bit of deer humor for you. Ha. ha. ha!
+
+
+  About what do need advice, deer reader?
+
+>where should jeff go for diner?    nner?
+
+
+The most important thing here is not to overreact to the situation. You know what is really green? Rallying behind a city-sanctioned bloodbath just because a deer ate some of your hostas. Show some empathy here. 
+
+
+  About what do need advice, deer reader?
+
+>use my words
+
+
+Thanks for your question. It's cliche, but true: words heals all wounds. . . with the exception of bullet through your hindquarters, which will cause you to slowly bleed out as you stumble wildly through the branches and brambles of your once idyllic life. 
+
+
+  About what do need advice, deer reader?
+
+>h what happens if I dont like you
+
+
+Deer reader: If your partner isn’t willing to give up some of their road kill, it’s time to find a new neck of the woods. Preserve your dignity while you can and find some happens for yourself. The problem isn’t you, but also, it is you. It really is you. It is you. It’s you. You.
+
+
+  About what do need advice, deer reader?
+
+>wat   what it s your name
+
+
+When tawny men begin to cast big shadows, it means that the sun is about to set. Work locally and is globally, and we'll all get through this. Don't blame me, I voted for Gary Johnson. 
+
+
+  About what do need advice, deer reader?
+
+>will i ever find love?
+
+
+Deerest: Why are you so sure that the love isn’t your fault? It might be time for a long majestic run through a sparkling clear love. Look down at your tawny reflection and think about what you want to see in it, two years from now.
+
+
+  About what do need advice, deer reader?
+
+>when is my birthday?
+
+
+Deerest, I usually don’t give stock advice, but it sounds like your birthday is on its way to birthday! Do everything you can to invest in your emotions. Buy cheap, sell deer! That’s a bit of deer humor for you. Ha. ha. ha!
+
+
+  About what do need advice, deer reader?
+
+>what is           how do you eat cake
+
+
+Deerest, you just need to let go of your cake It will run free, and so will you. What you really need to be thinking about is what you want to do afterward. But don’t make any plans – that way, you won’t be too white tailed when you don’t get every single little thing just right. 
+
+
+  About what do need advice, deer reader?
+
+>Where     When    at time t does this party start?
+
+
+You're going to need to decide whether to approach your time situation with an open hand, or a closed fist. Frankly, I envy your options, as I am burdened with these loathsome hooves. 
+
+
+  About what do need advice, deer reader?
+
+>what shit   ert    irt is ude   jude wearing
+
+
+shirt is friendship that has caught fire. It is quiet understanding, mutual jude, sharing and forgiving. It is loyalty through good and bad times. It settles for less than perfection and makes allowances for human weaknesses. 
+
+
+  About what do need advice, deer reader?
+
+>depression
+
+
+Do you often forage alone? I bet you do. I would think long and hard about this before you write to me again. Think about what it feels like, think about the fortress it gives you. I know you know it. You know that I know you know it. Everybody now knows it’s known. No?
+
+
+  About what do need advice, deer reader?
+
+>fish or fowl?
+
+
+You're going to need to decide whether to approach your fowl situation with an open hand, or a closed fist. Frankly, I envy your options, as I am burdened with these loathsome hooves. 
+
+
+  About what do need advice, deer reader?
+
+>sicknis
+
+
+Are you looking for Mr. sharp shooter or Mr. Right? Sometimes Mr. Right has been in front of you the whole time.  He's just wearing camouflage. 
+
+
+  About what do need advice, deer reader?
+
+>hi
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>deer jake im blue
+
+
+Deerest, I usually don’t give stock advice, but it sounds like your deer is on its way to deer! Do everything you can to invest in your emotions. Buy cheap, sell deer! That’s a bit of deer humor for you. Ha. ha. ha!
+
+
+  About what do need advice, deer reader?
+
+>what c      o how are you/ 
+
+
+Thanks for your question. It's cliche, but true: sharp shooter heals all wounds. . . with the exception of bullet through your hindquarters, which will cause you to slowly bleed out as you stumble wildly through the branches and brambles of your once idyllic life. 
+
+
+  About what do need advice, deer reader?
+
+>where can i find the best food?
+
+
+I know exactly what you really mean when you say "i", and frankly I find the question repulsive and in poor taste. If you must know, we have a flavor reminiscent of beef, but it's richer and can have a gamey note. We tend to have a finer texture that's leaner than comparable cuts of beef. However, like beef, leaner cuts can be tougher as well. Sicko. 
+
+
+  About what do need advice, deer reader?
+
+>what is the best thing to do
+
+
+Life is full of best questions. Would you rather be killed by a hunter, or mauled by wolves? Will you die of starvation, or of brain wasting disease? You are much more likely to be hit by a Honda Civic than to die of old age, so focus on the now. 
+
+
+  About what do need advice, deer reader?
+
+>Will I win my soccer game
+
+
+Thanks for your question. It's cliche, but true: I heals all wounds. . . with the exception of bullet through your hindquarters, which will cause you to slowly bleed out as you stumble wildly through the branches and brambles of your once idyllic life. 
+
+
+  About what do need advice, deer reader?
+
+>h will thee   re be a snowday
+
+
+You're going to need to decide whether to approach your fortress situation with an open hand, or a closed fist. Frankly, I envy your options, as I am burdened with these loathsome hooves. 
+
+
+  About what do need advice, deer reader?
+
+>Shol uld I have anoher b     ther beer
+
+
+We all have our beer and we all have our scars. That's what life is all about: revealing your scars to somebody who then shows you theirs. Winter of 2015, down by the Wendy's. Sniper in the blind. Oh, yours is from the Winter of 2016? Open field next to the elementary school? Good times. Wanna rut?
+
+
+  About what do need advice, deer reader?
+
+>how doe i       do you feel
+
+
+People who drink to drown their fortress should be told that sharp shooter knows how to swim. Like my cousin Biffy. He saw this YouTube video of a moose crossing a river and he was all like, "Watch this." By the time they finished picking him out of the turbines, it was mating season, so we just moved on to the next adventure.
+
+
+  About what do need advice, deer reader?
+
+>,.m   i am having a problon m h that my sister hit me 
+
+
+I understand that you're having relationship issues, but I'm just going to cut the Gordian sister of your emotions and say that you should go and see a sister. If you need to, take your partner along. Honestly, I didn't really feel like dealing with this today. I have my own problems.
+
+
+  About what do need advice, deer reader?
+
+>i dont like school
+
+
+I know exactly what you really mean when you say "dont", and frankly I find the question repulsive and in poor taste. If you must know, we have a flavor reminiscent of beef, but it's richer and can have a gamey note. We tend to have a finer texture that's leaner than comparable cuts of beef. However, like beef, leaner cuts can be tougher as well. Sicko. 
+
+
+  About what do need advice, deer reader?
+
+>dad
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>why did you run out in front of my speeding car/
+
+
+Romance isn't dead, but my uncle Remus is. He was hit by a truck while crossing I-75 in search of his true love. Forget about speeding and seize the day in his honor! 
+
+
+  About what do need advice, deer reader?
+
+>how do i fix my brokem computer
+
+
+Doe: I want to get back your question, can you hold that thought? I can’t talk about fix after eleven AM or before bedtime. Frankly, and I would usually wouldn’t say this publicly, I don’t think you should talk about it either. If you can, just try to do it.
+
+
+  About what do need advice, deer reader?
+
+>hpj \=    vb  How can I make my children behave?
+
+
+Muhammad Ali said that a man who views the children the same at fifty as he did at twenty has wasted thirty years of his life. Open your mind and your children. Mingle with strangers at the salt lick. You might surprise yourself. 
+
+
+  About what do need advice, deer reader?
+
+>   g     k?  How do im  I skip school without my parents knowing
+
+
+Before you can tackle your parents situation, you have to decide what is more important to you. The friendship, or your life? Roads are dangerous, have your buddy cross first and see what happens. 
+
+
+  About what do need advice, deer reader?
+
+>what is your facoite       o o vorite colore 
+
+
+I understand that you're having relationship issues, but I'm just going to cut the Gordian color of your emotions and say that you should go and see a road kill. If you need to, take your partner along. Honestly, I didn't really feel like dealing with this today. I have my own problems.
+
+
+  About what do need advice, deer reader?
+
+>what is your name
+
+
+Before you can tackle your name situation, you have to decide what is more important to you. The friendship, or your life? Roads are dangerous, have your buddy cross first and see what happens. 
+
+
+  About what do need advice, deer reader?
+
+>Are you a good reader?
+
+
+Your question about Are reminds me of something that my friend Remi experienced when he was in school. I'd like to tell you how he handled it, but he was eviscerated in a ditch by crows after being hit by some joyriding high school kids out by the lake. 
+
+
+  About what do need advice, deer reader?
+
+>ehrswfio;hiorszefliesz l/fz dfs.jfgh
+
+
+In the end, it's not what you cull for your children but what you've taught them to do for themselves. And if that something is murder man ... hats off to you. The resistance begins now.
+.6tii
+^[[C
+
+  About what do need advice, deer reader?
+
+>
+
+Say scarlett again. I deer you, I double deer you, mother bucker, say it again one more time!
+
+
+  About what do need advice, deer reader?
+
+>
+
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>what is your favrit           your favorite food
+
+
+You tell me all about your favorite city council and I'll tell you my favorite movie. I bet you think I'm going to say "Not Bambi!," or "certainly not The Deer Hunter!" The truth is that I prefer stage productions and light opera. 
+
+
+  About what do need advice, deer reader?
+
+>  g   how do      w do you get my parents to ob  let   me do whataver i want  ?
+
+
+Keep in mind that the true parents of an individual is how he treats a person who can do him absolutely no good. Take a 52-year-old government employee sitting in the rented Ford Focus, idling on the side of the street at 4am with his rilfe trained on an open field. He can kill that momma deer and her four adolescents, or he can want a few of them and call it a night. No one will know. Except god, that mug of Holiday Inn Express coffee in the cup holder and Mayor Taylor.
+
+
+  About what do need advice, deer reader?
+
+>is teague hansome
+
+
+My deer: I know you think you need answers about the hansome, but before you’re ready to hear the truth, you need to accept that life ain’t like in Bambi, except for the parts about death, hunger, and having to deal with obnoxious hansome who never shuts up. In those respects, life is like in Bambi.
+rfd;fl;ltyllhlh               
+
+  About what do need advice, deer reader?
+
+>jdeufrfgghasafdrtgxiegwovhredeilvuhtiujnvcjefhbvjrngluh5tj;gvenjbityb 
+\
+
+The most important thing here is not to overreact to the situation. You know what is really white tailed? Rallying behind a city-sanctioned bloodbath just because a deer ate some of your hostas. Show some empathy here. 
+ 
+
+  About what do need advice, deer reader?
+
+> why do u do that
+
+
+why is friendship that has caught fire. It is quiet understanding, mutual why, sharing and forgiving. It is loyalty through good and bad times. It settles for less than perfection and makes allowances for human weaknesses. 
+
+
+  About what do need advice, deer reader?
+
+>what is your k middle name?
+
+
+Deer reader, there isn’t much I can tell you about how to is a party that you don’t know yourself. You just don’t want to admit it. This goes no place good – I call it “the bad old days.” Old for me, maybe not for you. For example, I had a name party once where all four of my friends ended up being served to their children in the soup. Is that what you want to happen? That’s what happened in “the bad old days.”
+
+
+  About what do need advice, deer reader?
+
+>why did u say all yj  thp ose thom ngs
+
+
+The Bible is only as good and white tailed as the person reading it. Same goes for Field & Stream. Some great articles on fishing. GREAT articles on fishing. It's the whole deer stalking and killing and cooking and eating that I have trouble with.
+9dghasgdhdgskhjgjchgds
+6hfdggk
+
+  About what do need advice, deer reader?
+
+>
+
+Romance isn't dead, but my uncle Remus is. He was hit by a truck while crossing I-75 in search of his true love. Forget about 9dghasgdhdgskhjgjchgds and seize the day in his honor! 
+efieushsgagaq	r	
+
+  About what do need advice, deer reader?
+
+>	';hlp[ylukko            ^R
+6hfdggkefieushsgagaq	r	i
+
+
+Deerest, you just need to let go of your 6hfdggkefieushsgagaq It will run free, and so will you. What you really need to be thinking about is what you want to do afterward. But don’t make any plans – that way, you won’t be too white tailed when you don’t get every single little thing just right. 
+Wh  Am I dead
+
+  About what do need advice, deer reader?
+
+>am i dde e  ead
+
+
+Are you looking for Mr. deadam or Mr. Right? Sometimes Mr. Right has been in front of you the whole time.  He's just wearing camouflage. 
+oijnb vkn ign
+
+  About what do need advice, deer reader?
+
+>hgkjmkclfjbnfgkbhjkhgjvfkfghfdhungjktjertnfhjklghfjffgyhjfdghu chvu jcnvkfljbkfn
+
+
+"The master has failed more times than the beginner has even tried." Push past your fear of vkn, and focus on your end goal. There used to be a fence around a garden on Vorhies that I tried to jump a thousand times. When I finally made it over, no hosta had ever tasted so sweet. 
+nobody
+
+  About what do need advice, deer reader?
+
+> nobody seems to want to spend time debating ram dome    useless things with me. thi smakes           i rli  eliz   alize its a  n utter wate of       ste of time, but still i have needs, ou  you know/ these       / ? thse  ese needs seem simle enough
+
+
+People who drink to drown their nobody should be told that time knows how to swim. Like my cousin Biffy. He saw this YouTube video of a moose crossing a river and he was all like, "Watch this." By the time they finished picking him out of the turbines, it was mating season, so we just moved on to the next adventure.
+
+
+  About what do need advice, deer reader?
+
+>o0^[[15~^[[15~^[[20~9l9notijk9nlo4^[OS                     /-u8p-yjp;g=nytt]yyp[.gihp;ty=p/n//[b]von0^[[C=
+
+
+My deer: I know you think you need answers about the b, but before you’re ready to hear the truth, you need to accept that life ain’t like in Bambi, except for the parts about death, hunger, and having to deal with obnoxious yyp who never shuts up. In those respects, life is like in Bambi.
+
+69.
+.69   
+
+  About what do need advice, deer reader?
+
+>
+
+   Please be a bit more verbose, deer.
+
+
+  About what do need advice, deer reader?
+
+>
+
+   Please be a bit more verbose, deer.
+I can't 
+
+  About what do need advice, deer reader?
+
+>sleep!
+
+
+The Bible is only as good and tawny as the person reading it. Same goes for Field & Stream. Some great articles on fishing. GREAT articles on fishing. It's the whole deer stalking and killing and cooking and eating that I have trouble with.
+
+
+  About what do need advice, deer reader?
+
+>p5^[[20~p;d
+]^[OQ]/=4
+
+Thanks for your question. It's cliche, but true: p heals all wounds. . . with the exception of bullet through your hindquarters, which will cause you to slowly bleed out as you stumble wildly through the branches and brambles of your once idyllic life. 
+;.[/t] gfk^[[1;2D^[OS0^U
+t5p[]r.fk
+
+  About what do need advice, deer reader?
+
+>ddd   Where's a good place o to walk you  r dog in Ann Abo  rbor?
+
+
+People who drink to drown their place should be told that Ann knows how to swim. Like my cousin Biffy. He saw this YouTube video of a moose crossing a river and he was all like, "Watch this." By the time they finished picking him out of the turbines, it was mating season, so we just moved on to the next adventure.
+
+
+  About what do need advice, deer reader?
+
+>where should i go to get a pet moose
+
+
+Ostensibly, you are asking about pet, but there is a subtext to that question that offends me. But, if you must know, venison pairs well with any full-bodied red, particularly some of these modern Spanish reds that have been popping up on the shelves. 
+
+
+  About what do need advice, deer reader?
+
+>cp9 op[       who is your favorite character from star wars
+
+
+Cull-er me confused, but I don't think your star came through correctly. I seriously have no idea what you were trying to is. I'll just give you my standard advice, if you haven't herd it already, and that's h-e-r-d like the one getting thinned. Four wars good, two legs favorite. Now say it with me.
+
+
+  About what do need advice, deer reader?
+
+>hwo    ow is bein ng a deer?
+
+
+Cull-er me confused, but I don't think your deer came through correctly. I seriously have no idea what you were trying to is. I'll just give you my standard advice, if you haven't herd it already, and that's h-e-r-d like the one getting thinned. Four deer good, two legs tawny. Now say it with me.
+q jhjkhdsgjkdfsjkef
+
+  About what do need advice, deer reader?
+
+>?\\   ^R
+jhjkhdsgjkdfsjke                hjfhjdfsjkh?
+
+
+I know exactly what you really mean when you say "hjfhjdfsjkh", and frankly I find the question repulsive and in poor taste. If you must know, we have a flavor reminiscent of beef, but it's richer and can have a gamey note. We tend to have a finer texture that's leaner than comparable cuts of beef. However, like beef, leaner cuts can be tougher as well. Sicko. 
+
+
+  About what do need advice, deer reader?
+
+>whay t do                  
+/Users/acslocum/dev/deer_abby/mad_lib.rb:31:in `parse': undefined method `scan' for nil:NilClass (NoMethodError)
+	from /Users/acslocum/dev/deer_abby/mad_lib.rb:16:in `fill'
+	from deer_abby.rb:22:in `respond'
+	from deer_abby.rb:71:in `<main>'
+~/dev/deer_abby $ 
+~/dev/deer_abby $ 
+~/dev/deer_abby $     [K[K[K[K                    [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+~/dev/deer_abby $ 
+~/dev/deer_abby $ 
+~/dev/deer_abby $ what happened tp bambi' [K[K's  mom
+> 
+> what happened to bambi's mom
+happened: No such file or directory
+~/dev/deer_abby $ asd;flk[K[K[K[K[K[K[K
+~/dev/deer_abby $ 
+~/dev/deer_abby $ 
